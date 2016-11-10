@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span>Products</span> {{vm.products.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.products.name}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.products.description}}</span>
+        </dd>
+        <dt><span>Main Image</span></dt>
+        <dd>
+            <div ng-if="vm.products.mainImage">
+                <a ng-click="vm.openFile(vm.products.mainImageContentType, vm.products.mainImage)">
+                    <img data-ng-src="{{'data:' + vm.products.mainImageContentType + ';base64,' + vm.products.mainImage}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.products.mainImageContentType}}, {{vm.byteSize(vm.products.mainImage)}}
+            </div>
+        </dd>
+        <dt><span>Image 2</span></dt>
+        <dd>
+            <div ng-if="vm.products.image2">
+                <a ng-click="vm.openFile(vm.products.image2ContentType, vm.products.image2)">
+                    <img data-ng-src="{{'data:' + vm.products.image2ContentType + ';base64,' + vm.products.image2}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.products.image2ContentType}}, {{vm.byteSize(vm.products.image2)}}
+            </div>
+        </dd>
+        <dt><span>Image 3</span></dt>
+        <dd>
+            <div ng-if="vm.products.image3">
+                <a ng-click="vm.openFile(vm.products.image3ContentType, vm.products.image3)">
+                    <img data-ng-src="{{'data:' + vm.products.image3ContentType + ';base64,' + vm.products.image3}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.products.image3ContentType}}, {{vm.byteSize(vm.products.image3)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="products-detail.edit({id:vm.products.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

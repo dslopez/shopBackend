@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Stock</span> {{vm.stock.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Size</span></dt>
+        <dd>
+            <span>{{vm.stock.size}}</span>
+        </dd>
+        <dt><span>Stock</span></dt>
+        <dd>
+            <span>{{vm.stock.stock}}</span>
+        </dd>
+        <dt><span>Product</span></dt>
+        <dd>
+            <a ui-sref="products-detail({id:vm.stock.product.id})">{{vm.stock.product.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="stock-detail.edit({id:vm.stock.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

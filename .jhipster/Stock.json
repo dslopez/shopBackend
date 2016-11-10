@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "product",
+            "otherEntityName": "products",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": ["required"],
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "size",
+            "fieldType": "Sizes",
+            "fieldValues": "XS,S,M,L,XL,Unica",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "stock",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20161104115009",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "stock",
+    "pagination": "pager"
+}

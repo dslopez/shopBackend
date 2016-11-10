@@ -1,0 +1,79 @@
+<div>
+    <h2>Products</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="products.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Products
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainImage"><span>Main Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="image2"><span>Image 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="image3"><span>Image 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="products in vm.products track by products.id">
+                    <td><a ui-sref="products-detail({id:products.id})">{{products.id}}</a></td>
+                    <td>{{products.name}}</td>
+                    <td>{{products.description}}</td>
+                    <td>
+                        <a ng-if="products.mainImage" ng-click="vm.openFile(products.mainImageContentType, products.mainImage)">
+                            <img data-ng-src="{{'data:' + products.mainImageContentType + ';base64,' + products.mainImage}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="products.mainImage">{{products.mainImageContentType}}, {{vm.byteSize(products.mainImage)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="products.image2" ng-click="vm.openFile(products.image2ContentType, products.image2)">
+                            <img data-ng-src="{{'data:' + products.image2ContentType + ';base64,' + products.image2}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="products.image2">{{products.image2ContentType}}, {{vm.byteSize(products.image2)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="products.image3" ng-click="vm.openFile(products.image3ContentType, products.image3)">
+                            <img data-ng-src="{{'data:' + products.image3ContentType + ';base64,' + products.image3}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="products.image3">{{products.image3ContentType}}, {{vm.byteSize(products.image3)}}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="products-detail({id:products.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="products.edit({id:products.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="products.delete({id:products.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
