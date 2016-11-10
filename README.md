@@ -1,5 +1,7 @@
 # shopApp
 
+angularjs + spring boot app with jhipster. The goal of the app is admin the products of an online shop.
+
 This application was generated using JHipster 3.9.1, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v3.9.1](https://jhipster.github.io/documentation-archive/v3.9.1).
 
 ## Development
@@ -109,3 +111,4 @@ To set up a CI environment, consult the [Setting up Continuous Integration][] pa
 [Karma]: http://karma-runner.github.io/
 [Jasmine]: http://jasmine.github.io/2.0/introduction.html
 [Protractor]: https://angular.github.io/protractor/
+
